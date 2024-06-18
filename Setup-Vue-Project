@@ -1,0 +1,4 @@
+npm install -g @vue/cli
+vue create personalized-news-reader
+cd personalized-news-reader
+npm install axios
