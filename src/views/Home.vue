@@ -30,7 +30,7 @@ export default {
       if (!this.keyword) return;
       try {
         const response = await axios.get(
-          `https://newsapi.org/v2/everything?q=${this.keyword}&apiKey=YOUR_NEWSAPI_KEY`
+          `https://newsapi.org/v2/everything?q=${this.keyword}&apiKey=e21d9532b7684ae0afdfc73073acf391`
         );
         this.articles = response.data.articles;
       } catch (error) {
