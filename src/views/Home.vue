@@ -1,40 +1,51 @@
 <template>
   <div>
     <h1>Personalized News Reader</h1>
+
     <input
       type="text"
       v-model="keyword"
       @keyup.enter="fetchNews"
       placeholder="Enter keyword and press enter"
     />
-    <NewsList :articles="articles" />
+
+    <NewsList v-if="articles.length" :articles="articles" />
+    <p v-else-if="loading">Loading...</p>
+    <p v-else>No articles yet</p>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-import NewsList from '../components/NewsList.vue';
+import axios from 'axios'
+import NewsList from '@/components/NewsList.vue'
 
 export default {
-  components: {
-    NewsList
-  },
+  components: { NewsList },
+
   data() {
     return {
       keyword: '',
-      articles: []
-    };
+      articles: [],
+      loading: false
+    }
   },
+
   methods: {
     async fetchNews() {
-      if (!this.keyword) return;
+      if (!this.keyword.trim()) return
+
+      this.loading = true
+
       try {
-        const response = await axios.get(
-          `https://newsapi.org/v2/everything?q=${this.keyword}&apiKey=e21d9532b7684ae0afdfc73073acf391`
-        );
-        this.articles = response.data.articles;
-      } catch (error) {
-        console.error('Error fetching news:', error);
+        // Call backend instead of NewsAPI directly
+        const res = await axios.get(
+          `/api/news?q=${encodeURIComponent(this.keyword)}`
+        )
+        this.articles = res.data.articles || []
+      } catch (err) {
+        console.error('Error fetching news:', err)
+      } finally {
+        this.loading = false
       }
     }
   }
