@@ -18,5 +18,11 @@
   },
   "engines": {
   "node": ">=18"
+  },
+  "scripts": {
+  "dev": "vite",
+  "build": "vite build",
+  "preview": "vite preview",
+  "start": "node server/index.js"
 }
 }
