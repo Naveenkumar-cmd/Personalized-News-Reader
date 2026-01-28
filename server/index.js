@@ -27,7 +27,7 @@ app.get('/api/news', async (req, res) => {
   }
 })
 
-// Serve Vue frontend from dist/
+// Serve Vue frontend from dist
 const __dirname = path.resolve()
 app.use(express.static(path.join(__dirname, 'dist')))
 
