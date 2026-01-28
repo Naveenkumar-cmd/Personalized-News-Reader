@@ -13,7 +13,7 @@
 
 <script>
 import axios from 'axios';
-import NewsList from '@/components/NewsList.vue';
+import NewsList from './components/NewsList.vue';
 
 export default {
   components: {
