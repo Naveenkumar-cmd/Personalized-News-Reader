@@ -13,7 +13,4 @@
     "vite": "^5.0.0"
     "@vitejs/plugin-vue": "^5.0.0"
   }
-  "engines": {
-  "node": ">=18"
-}
 }
